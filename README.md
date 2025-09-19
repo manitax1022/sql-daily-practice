@@ -33,6 +33,7 @@ WHERE unit_price > 200;
 - ![Screenshot](screenshots/SQL02.png)
 
 **Insight**
+
 Orders with unit price greater than 200 are primarily Tissue and Virgin Baled Tissue. These represent high-value procurement items, important for tracking spending patterns and supporting the paper mill’s production formulas.
 
 
@@ -48,4 +49,5 @@ WHERE unit_price < 200 AND QUANTITY > 150;
 - ![Screenshot](screenshots/SQL03.png)
 
 **Insight**
+
 Orders with unit price below 200 but high quantities (greater than 150) suggest bulk procurement of lower-cost materials. These are typically commodity-grade paper products purchased in large volumes to support steady production needs. Monitoring this category is important for tracking operational efficiency, negotiating bulk discounts, and identifying cost-saving opportunities in procurement.
