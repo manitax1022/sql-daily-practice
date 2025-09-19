@@ -51,3 +51,19 @@ WHERE unit_price < 200 AND QUANTITY > 150;
 **Insight**
 
 Orders with unit price below 200 but high quantities (greater than 150) suggest bulk procurement of lower-cost materials. These are typically commodity-grade paper products purchased in large volumes to support steady production needs. Monitoring this category is important for tracking operational efficiency, negotiating bulk discounts, and identifying cost-saving opportunities in procurement.
+
+
+### Q04 - List all orders sorted by highest unit price
+**SQL**
+```sql
+SELECT *  
+FROM Orders  
+ORDER BY unit_price DESC;
+```
+**Result**
+- [CSV Output](outputs/result04.csv)
+- ![Screenshot](screenshots/SQL04.png)
+
+**Insight**
+
+Sorting orders by descending unit price highlights the most expensive procurement items first. This helps quickly identify premium-grade materials (such as Virgin Baled Tissue) and monitor their impact on overall procurement costs. It is useful for spend analysis and supplier negotiations.
