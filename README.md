@@ -17,6 +17,7 @@ FROM Orders;
 - ![Screenshot](screenshots/SQL01.png)
 
 **Insight**
+
 Raw table inspection, confirmed data imported correctly.
 
 
