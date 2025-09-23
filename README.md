@@ -115,3 +115,67 @@ ORDER BY total_qty_purchase DESC;
 **Insight**
 
 The query ranks suppliers by total quantity purchased. Supplier 100700 accounts for the highest volume (3,905 units), followed by Supplier 100741 (2,085 units). This breakdown helps identify top-volume suppliers in my dataset, useful for evaluating supplier dependency, negotiating bulk contracts, and monitoring procurement concentration risks.
+
+
+## Day 3 - INNER JOIN, LEFT JOIN, and CASE WHEN 
+### Q08 - INNER JOIN Orders with Supplier
+**SQL**
+```sql
+SELECT s.supplier_name, s.region,
+       SUM(o.quantity*o.unit_price) AS total_purchase_value
+FROM Orders o
+INNER JOIN Suppliers s
+    ON o.supplier_id = s.supplier_id
+GROUP BY s.supplier_name, s.region
+ORDER BY total_purchase_value DESC;	
+```
+**Result**
+- [CSV Output](outputs/result08.csv)
+- ![Screenshot](screenshots/SQL08.png)
+
+**Insight**
+
+The INNER JOIN analysis shows total purchase value by supplier and region. This highlights which suppliers account for the largest share of spend, with clear visibility into procurement concentration. Identifying top suppliers in my dataset is useful for negotiating contracts, monitoring regional sourcing strategies, and managing supplier dependency risks.
+
+
+### Q09 - LEFT JOIN Orders with Supplier
+**SQL**
+```sql
+SELECT o.order_id, s.supplier_name, s.region, 
+       o.product_name, o.quantity, o.unit_price, o.order_date
+       FROM Orders o
+LEFT JOIN Suppliers s
+    ON o.supplier_id = s.supplier_id
+ORDER BY o.order_date DESC;	
+```
+**Result**
+- [CSV Output](outputs/result09.csv)
+- ![Screenshot](screenshots/SQL09.png)
+
+**Insight**
+
+The LEFT JOIN returns all orders in my dataset. This provides full visibility into procurement activity while also flagging missing or incomplete supplier data if any. Sorting by order date helps track recent transactions first, making it easier to spot gaps in supplier linkage and ensure data integrity in reporting.
+
+
+### Q10 - Categorize orders using CASE WHEN
+**SQL**
+```sql
+SELECT o.order_id, s.supplier_name, s.region, 
+       o.product_name, o.quantity, o.unit_price, o.order_date,
+	   CASE
+	       WHEN o.unit_price >= 160 THEN 'High Value'
+	       WHEN o.unit_price >= 125 AND o.unit_price <160 THEN 'Regular'
+	       ELSE 'Low Value'
+	   END AS order_category
+       FROM Orders o
+LEFT JOIN Suppliers s
+    ON o.supplier_id = s.supplier_id
+ORDER BY o.order_date DESC;
+```
+**Result**
+- [CSV Output](outputs/result10.csv)
+- ![Screenshot](screenshots/SQL10.png)
+
+**Insight**
+
+The CASE WHEN logic categorizes each order as High Value, Regular, or Low Value based on unit price. This segmentation makes it easier to distinguish premium-grade purchases from routine or bulk commodity orders. Combined with supplier and region data, it supports spend analysis, helping identify which suppliers deliver high-value items versus regular stock.
