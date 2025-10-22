@@ -206,5 +206,6 @@ ORDER BY total_spend DESC;
 - ![Screenshot](screenshots/SQL11.png)
 
 **Insight**
-This query calculates total spend per supplier while breaking it down into high-value and regular purchases using conditional aggregation. It provides a clearer view of supplier contribution to overall procurement costs. In my dataset, Supplier 100700 shows the highest total spend, indicating a key account for bulk and premium purchases. This insight supports spend optimization and supplier negotiation strategies.
+
+This query calculates total spend per supplier while breaking it down into high-value and regular purchases using conditional aggregation. It provides a clearer view of supplier contribution to overall procurement costs. In my dataset, Supplier 100700 shows the highest total spend, largely due to a special commodity line that carries premium pricing. This insight helps explain supplier spend variance and supports cost analysis and negotiation strategies.
 
