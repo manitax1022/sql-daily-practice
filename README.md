@@ -184,3 +184,27 @@ ORDER BY o.order_date DESC;
 **Insight**
 
 The CASE WHEN logic categorizes each order as High Value, Regular, or Low Value based on unit price. This segmentation makes it easier to distinguish premium-grade purchases from routine or bulk commodity orders. Combined with supplier and region data, it supports spend analysis, helping identify which suppliers deliver high-value items versus regular stock.
+
+
+### Q11 - Using Aggregate Functions with CASE WHEN  
+
+**SQL**  
+```sql
+SELECT 
+    s.supplier_name,
+    SUM(CASE WHEN o.unit_price >= 160 THEN o.quantity * o.unit_price ELSE 0 END) AS high_value_spend,
+    SUM(CASE WHEN o.unit_price < 160 THEN o.quantity * o.unit_price ELSE 0 END) AS regular_spend,
+    SUM(o.quantity * o.unit_price) AS total_spend
+FROM Orders o
+INNER JOIN Suppliers s
+    ON o.supplier_id = s.supplier_id
+GROUP BY s.supplier_name
+ORDER BY total_spend DESC;
+```
+**Result**
+- [CSV Output](outputs/result11.csv)
+- ![Screenshot](screenshots/SQL11.png)
+
+**Insight**
+This query calculates total spend per supplier while breaking it down into high-value and regular purchases using conditional aggregation. It provides a clearer view of supplier contribution to overall procurement costs. In my dataset, Supplier 100700 shows the highest total spend, indicating a key account for bulk and premium purchases. This insight supports spend optimization and supplier negotiation strategies.
+
