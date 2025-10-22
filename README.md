@@ -1,8 +1,13 @@
-# sql-daily-practice
-SQL practice using procurement dataset (SQLite + DB Browser)
-This repo documents my daily SQL pratice using procurement dataset.
-Each day I add new queries, export results, and summarize insights.
-Tools: SQLite + DB Browser for SQLite.
+# Procurement Data Analysis with SQL
+
+This project demonstrates my ability to analyze real procurement data using SQL.  
+It simulates a supplier order management system and focuses on extracting business insights such as supplier performance, spend concentration, and material cost segmentation.
+
+**Tools:** SQLite, DB Browser for SQLite  
+**Skills:** SQL querying, data cleaning, joins, aggregation, conditional logic, and insight generation.
+
+The project is designed as a progressive learning log, where each section builds on previous concepts — from simple filtering to business-focused analytics.
+
 
 ## Day 1 - Basic SELECT & WHERE
 
